@@ -4,7 +4,8 @@
     "require": {
         "php": "~8.0.0||~8.1.0||~8.2.0",
         "softcommerce/module-plenty-item-profile": "*",
-        "softcommerce/module-plenty-order-profile": "*"
+        "softcommerce/module-plenty-order-profile": "*",
+        "swissup/module-checkout-fields": "*"
     },
     "type": "magento2-module",
     "license": [
@@ -19,5 +20,5 @@
             "SoftCommerce\\PlentySwissupCheckoutFields\\": ""
         }
     },
-    "version": "1.0.1"
+    "version": "1.0.2"
 }

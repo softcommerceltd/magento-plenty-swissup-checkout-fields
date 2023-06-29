@@ -13,6 +13,7 @@ use SoftCommerce\Core\Framework\DataStorageInterfaceFactory;
 use SoftCommerce\Core\Framework\MessageStorageInterfaceFactory;
 use SoftCommerce\PlentyClient\Model\ClientConfigInterface;
 use SoftCommerce\PlentyOrderProfile\Model\OrderExportService\AbstractService;
+use SoftCommerce\PlentyOrderProfile\Model\OrderExportService\Processor\Order as OrderProcessor;
 use SoftCommerce\PlentySwissupCheckoutFields\Model\GetCheckoutFieldsDataByOrderInterface;
 use SoftCommerce\Profile\Model\ServiceAbstract\ProcessorInterface;
 use Swissup\CheckoutFields\Api\Data\FieldInterface;
@@ -83,11 +84,13 @@ class OrderCommentGenerator extends AbstractService implements ProcessorInterfac
                 'referenceType' => 'order',
                 'isVisibleForContact' => false
             ];
-
         }
 
         if ($request) {
-            $this->getRequestStorage()->setData($request);
+            $context->getRequestStorage()->setData(
+                array_values($request),
+                [OrderProcessor::TYPE_ID, 'comments']
+            );
         }
 
         $this->finalize();
