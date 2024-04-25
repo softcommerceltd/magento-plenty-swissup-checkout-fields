@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 1.0.3
+- **Compatibility**: Introduced support for PHP 8.3
+
 ### Version 1.0.2
 - **Compatibility**: Added compatibility for `SoftCommerce_PlentyOrderProfile` #2
 - **Enhancement**: Composer dependency for `swissup/module-checkout-fields` #1

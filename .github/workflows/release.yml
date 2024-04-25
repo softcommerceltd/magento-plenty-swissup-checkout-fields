@@ -12,8 +12,10 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          name: "1.0.2"
-          tag_name: 1.0.2
-          body: "1.0.2"
+          name: 1.0.3 [CE|EE|ECE 2.4.0-2.4.7] 25 Apr 2024
+          tag_name: 1.0.3
+          body: |-
+            ### softcommerce/module-plenty-swissup-checkout-fields [1.0.3]
+            - **Compatibility**: Introduced support for PHP 8.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
