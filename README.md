@@ -1,5 +1,5 @@
 ## About
-PlentyMarkets Connector - Swissup Checkout Fields add-on.
+PlentyONE Connector - Swissup Checkout Fields add-on.
 
 ## Purpose
 Used to extend order totals.

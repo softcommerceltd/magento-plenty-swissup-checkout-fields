@@ -1,6 +1,6 @@
 {
     "name": "softcommerce/module-plenty-swissup-checkout-fields",
-    "description": "PlentyMarkets Connector - Swissup Checkout Fields add-ons.",
+    "description": "PlentyONE Connector - Swissup Checkout Fields add-ons.",
     "require": {
         "php": "~8.0.0||~8.1.0||~8.2.0||~8.3.0||~8.4.0",
         "softcommerce/module-plenty-item-profile": "*",
