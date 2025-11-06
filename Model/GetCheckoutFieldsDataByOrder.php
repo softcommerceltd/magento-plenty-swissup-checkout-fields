@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace SoftCommerce\PlentySwissupCheckoutFields\Model;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\AdapterInterface;
+use SoftCommerce\Core\Model\Trait\ConnectionTrait;
 use Swissup\CheckoutFields\Api\Data\FieldInterface;
 use Swissup\CheckoutFields\Api\Data\FieldValueInterface;
 
@@ -19,10 +19,7 @@ use Swissup\CheckoutFields\Api\Data\FieldValueInterface;
  */
 class GetCheckoutFieldsDataByOrder implements GetCheckoutFieldsDataByOrderInterface
 {
-    /**
-     * @var AdapterInterface
-     */
-    private $connection;
+    use ConnectionTrait;
 
     /**
      * @var string[]
@@ -32,9 +29,9 @@ class GetCheckoutFieldsDataByOrder implements GetCheckoutFieldsDataByOrderInterf
     /**
      * @param ResourceConnection $resourceConnection
      */
-    public function __construct(ResourceConnection $resourceConnection)
-    {
-        $this->connection = $resourceConnection->getConnection();
+    public function __construct(
+        private readonly ResourceConnection $resourceConnection
+    ) {
     }
 
     /**
@@ -54,18 +51,18 @@ class GetCheckoutFieldsDataByOrder implements GetCheckoutFieldsDataByOrderInterf
      */
     private function getData(int $orderId): array
     {
-        $select = $this->connection->select()
+        $select = $this->getConnection()->select()
             ->from(
-                ['scv' => $this->connection->getTableName('swissup_checkoutfields_values')],
+                ['scv' => $this->getConnection()->getTableName('swissup_checkoutfields_values')],
                 [FieldValueInterface::VALUE_ID, FieldValueInterface::VALUE]
             )
             ->joinLeft(
-                ['scf' => $this->connection->getTableName('swissup_checkoutfields_field')],
+                ['scf' => $this->getConnection()->getTableName('swissup_checkoutfields_field')],
                 'scv.' . FieldInterface::FIELD_ID . ' = scf.' . FieldInterface::FIELD_ID,
                 [FieldInterface::FRONTEND_LABEL]
             )
             ->where('scv.' . FieldValueInterface::ORDER_ID . ' = ?', $orderId);
 
-        return $this->connection->fetchAll($select);
+        return $this->getConnection()->fetchAll($select);
     }
 }

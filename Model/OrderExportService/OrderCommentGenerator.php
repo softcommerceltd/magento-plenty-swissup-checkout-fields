@@ -10,7 +10,7 @@ namespace SoftCommerce\PlentySwissupCheckoutFields\Model\OrderExportService;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use SoftCommerce\Core\Framework\DataStorageInterfaceFactory;
-use SoftCommerce\Core\Framework\MessageStorageInterfaceFactory;
+use SoftCommerce\Core\Framework\MessageCollectorInterfaceFactory;
 use SoftCommerce\PlentyClient\Model\ClientConfigInterface;
 use SoftCommerce\PlentyOrderProfile\Model\OrderExportService\AbstractService;
 use SoftCommerce\PlentyOrderProfile\Model\OrderExportService\Processor\Order as OrderProcessor;
@@ -27,34 +27,27 @@ use Swissup\CheckoutFields\Api\Data\FieldValueInterface;
 class OrderCommentGenerator extends AbstractService implements ProcessorInterface
 {
     /**
-     * @var ClientConfigInterface
-     */
-    private ClientConfigInterface $clientConfig;
-
-    /**
-     * @var GetCheckoutFieldsDataByOrderInterface
-     */
-    private GetCheckoutFieldsDataByOrderInterface $getCheckoutFieldsDataByOrder;
-
-    /**
      * @param ClientConfigInterface $clientConfig
      * @param GetCheckoutFieldsDataByOrderInterface $getCheckoutFieldsDataByOrder
      * @param DataStorageInterfaceFactory $dataStorageFactory
-     * @param MessageStorageInterfaceFactory $messageStorageFactory
+     * @param MessageCollectorInterfaceFactory $messageCollectorFactory
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param array $data
      */
     public function __construct(
-        ClientConfigInterface $clientConfig,
-        GetCheckoutFieldsDataByOrderInterface $getCheckoutFieldsDataByOrder,
+        private readonly ClientConfigInterface $clientConfig,
+        private readonly GetCheckoutFieldsDataByOrderInterface $getCheckoutFieldsDataByOrder,
         DataStorageInterfaceFactory $dataStorageFactory,
-        MessageStorageInterfaceFactory $messageStorageFactory,
+        MessageCollectorInterfaceFactory $messageCollectorFactory,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         array $data = []
     ) {
-        $this->clientConfig = $clientConfig;
-        $this->getCheckoutFieldsDataByOrder = $getCheckoutFieldsDataByOrder;
-        parent::__construct($dataStorageFactory, $messageStorageFactory, $searchCriteriaBuilder, $data);
+        parent::__construct(
+            $dataStorageFactory,
+            $messageCollectorFactory,
+            $searchCriteriaBuilder,
+            $data
+        );
     }
 
     /**
