@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2025-01-08
+### Changed
+- **BREAKING**: Upgraded minimum PHP version requirement to 8.3+
+- **BREAKING**: Major API changes for PlentyMarkets integration
+- **Compatibility**: Added support for PHP 8.4
+
 ## [1.0.4] - 2023-09-13
 ### Changed
 - **Enhancement**: Included `servicepoint` type to account for `pakshop` facility.
@@ -28,7 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [M2PO-41] Swissup Checkout Fields add-ons.
 
-[Unreleased]: https://github.com/softcommerceltd/magento-plenty-swissup-checkout-fields/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/softcommerceltd/magento-plenty-swissup-checkout-fields/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/softcommerceltd/magento-plenty-swissup-checkout-fields/compare/v1.0.4...v2.0.0
 [1.0.4]: https://github.com/softcommerceltd/magento-plenty-swissup-checkout-fields/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/softcommerceltd/magento-plenty-swissup-checkout-fields/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/softcommerceltd/magento-plenty-swissup-checkout-fields/compare/v1.0.1...v1.0.2
